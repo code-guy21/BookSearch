@@ -21,11 +21,11 @@ const Nav = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <Link to="/" class="nav-link">
+            <Link to="/" className="nav-link">
               Search
             </Link>
 
-            <Link to="/saved" class="nav-link">
+            <Link to="/saved" className="nav-link">
               Saved
             </Link>
           </ul>

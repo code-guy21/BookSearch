@@ -4,16 +4,21 @@ import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 import Nav from "./components/Nav";
 import Jumbotron from "./components/Jumbotron";
+import BookContext from "./utils/BookContext";
+import useBookModel from "./utils/useBookModel";
 
 function App() {
+  const bookModel = useBookModel();
   return (
     <Router>
       <Nav />
       <Jumbotron />
-      <Switch>
-        <Route exact path="/" component={Search} />
-        <Route exact path="/saved" component={Saved} />
-      </Switch>
+      <BookContext.Provider value={bookModel}>
+        <Switch>
+          <Route exact path="/" component={Search} />
+          <Route exact path="/saved" component={Saved} />
+        </Switch>
+      </BookContext.Provider>
     </Router>
   );
 }
