@@ -9,7 +9,7 @@ const Form = () => {
           className="form-control"
           placeholder="Moby Dick..."
         />
-        <button type="submit" className="btn btn-primary my-2">
+        <button type="submit" className="btn btn-primary my-2 float-right">
           Search
         </button>
       </div>

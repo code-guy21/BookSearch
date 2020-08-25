@@ -1,15 +1,12 @@
 import { useState } from "react";
 
 const useBookModel = () => {
-  const [bookState, setBooks] = useState([
-    "Harry Potter",
-    "Great Expectations",
-  ]);
+  const [bookState, setBooks] = useState([]);
 
   return {
     books: {
       value: bookState,
-      onClick: (books) => setBooks({ ...bookState, ...books }),
+      set: (books) => setBooks({ ...bookState, ...books }),
     },
   };
 };
