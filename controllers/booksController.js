@@ -1,11 +1,31 @@
+const db = require("../models");
+
 module.exports = {
   findAll: (req, res) => {
-    res.send("finding all");
+    db.Book.find({})
+      .then((dbModel) => {
+        res.json(dbModel);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
   },
   create: (req, res) => {
-    res.json(req.body);
+    db.Book.create(req.body)
+      .then((dbModel) => {
+        res.json(dbModel);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
   },
   remove: (req, res) => {
-    res.send("deleting");
+    db.Book.deleteOne({ _id: req.params.id })
+      .then((dbModel) => {
+        res.json(dbModel);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
   },
 };
