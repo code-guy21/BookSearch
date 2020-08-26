@@ -9,6 +9,7 @@ const BookList = ({ data }) => {
           <Book
             key={i}
             id={book._id}
+            bookId={book.bookId}
             authors={book.authors}
             description={book.description}
             image={book.image}

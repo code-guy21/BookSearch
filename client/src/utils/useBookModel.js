@@ -12,7 +12,7 @@ const useBookModel = () => {
     },
     saved: {
       value: savedState,
-      set: (books) => setSaved({ ...savedState, ...books }),
+      set: (books) => setSaved({ ...books }),
     },
     search: {
       value: searchState,

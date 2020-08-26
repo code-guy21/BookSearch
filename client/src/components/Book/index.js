@@ -1,7 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
+import API from "../../utils/API";
+import BookContext from "../../utils/BookContext";
 
 const Book = (props) => {
-  console.log(props);
+  const bookContext = useContext(BookContext);
+
+  const handleDelete = () => {
+    API.deleteBook(props.id)
+      .then((resp) => {
+        let filtered = Object.entries(bookContext.saved.value)
+          .filter((book) => {
+            return book[0] !== props.id;
+          })
+          .reduce((obj, book) => {
+            obj[book[0]] = { ...book[1] };
+            return obj;
+          }, {});
+
+        bookContext.saved.set(filtered);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleSave = () => {
+    API.saveBook({ ...props, saved: true })
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((err) => {
+        console.log(resp);
+      });
+  };
   return (
     <div className="col-12">
       <div className="card mb-3">
@@ -20,7 +51,12 @@ const Book = (props) => {
           >
             View
           </a>
-          <button href="#" className="btn btn-danger">
+          <button
+            onClick={() => {
+              props.saved ? handleDelete() : handleSave();
+            }}
+            className="btn btn-danger"
+          >
             {props.saved ? "Delete" : "Save"}
           </button>
         </div>

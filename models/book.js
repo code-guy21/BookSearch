@@ -23,6 +23,10 @@ const bookSchema = new Schema({
   saved: {
     type: Boolean,
   },
+  bookId: {
+    type: String,
+    unique: true,
+  },
 });
 
 const Book = mongoose.model("Book", bookSchema);

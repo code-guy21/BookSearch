@@ -9,7 +9,6 @@ const Saved = () => {
   useEffect(() => {
     API.getBooks()
       .then((books) => {
-        console.log(books);
         bookContext.saved.set(books.data);
       })
       .catch((err) => {

@@ -9,24 +9,24 @@ const Form = () => {
     if (bookContext.search.value) {
       API.searchBooks(bookContext.search.value)
         .then((books) => {
-          bookContext.books.set(
-            books.data.items.reduce((obj, book) => {
-              obj[book.id] = {
-                id: book.id,
-                authors: book.volumeInfo.authors,
-                description: book.volumeInfo.description
-                  ? book.volumeInfo.description
-                  : "No Description",
-                image: book.volumeInfo.imageLinks
-                  ? book.volumeInfo.imageLinks.smallThumbnail
-                  : `https://via.placeholder.com/128x190`,
-                link: book.volumeInfo.infoLink,
-                title: book.volumeInfo.title,
-                saved: false,
-              };
-              return obj;
-            }, {})
-          );
+          let ordered = books.data.items.reduce((obj, book) => {
+            obj[book.id] = {
+              authors: book.volumeInfo.authors,
+              description: book.volumeInfo.description
+                ? book.volumeInfo.description
+                : "No Description",
+              image: book.volumeInfo.imageLinks
+                ? book.volumeInfo.imageLinks.smallThumbnail
+                : `https://via.placeholder.com/128x190`,
+              link: book.volumeInfo.infoLink,
+              title: book.volumeInfo.title,
+              saved: false,
+              bookId: book.id,
+            };
+            return obj;
+          }, {});
+
+          bookContext.books.set(ordered);
         })
         .catch((err) => {
           console.log(err);

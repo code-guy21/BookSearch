@@ -12,4 +12,13 @@ export default {
       },
     });
   },
+  saveBook: (body) => {
+    return axios.post(`/api/books`, body);
+  },
+  deleteBook: (id) => {
+    return axios.delete(`/api/books/${id}`);
+  },
+  findBook: (id) => {
+    return axios.get(`/api/books/${id}`);
+  },
 };
