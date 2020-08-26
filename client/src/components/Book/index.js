@@ -30,7 +30,7 @@ const Book = (props) => {
         console.log(resp);
       })
       .catch((err) => {
-        console.log(resp);
+        console.log(err);
       });
   };
   return (
