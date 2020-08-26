@@ -33,9 +33,12 @@ const Book = (props) => {
       });
   };
   return (
-    <div className="col-12">
-      <div className="card mb-3">
-        <div className="card-body">
+    <div className="col-12 ">
+      <div className="card mb-3 d-flex flex-row flex-wrap">
+        <div className="card-header border-0 col-md-3 d-flex align-items-center justify-content-center">
+          <img src={props.image} alt="book" style={{ height: "inherit" }} />
+        </div>
+        <div className="card-body col-md-9">
           <h5 className="card-title">{props.title}</h5>
 
           <p className="card-text">

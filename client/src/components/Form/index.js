@@ -9,6 +9,7 @@ const Form = () => {
     if (bookContext.search.value) {
       API.searchBooks(bookContext.search.value)
         .then((books) => {
+          console.log(books);
           let ordered = books.data.items.reduce((obj, book) => {
             obj.push({
               authors: book.volumeInfo.authors,
@@ -16,7 +17,7 @@ const Form = () => {
                 ? book.volumeInfo.description
                 : "No Description",
               image: book.volumeInfo.imageLinks
-                ? book.volumeInfo.imageLinks.smallThumbnail
+                ? book.volumeInfo.imageLinks.thumbnail
                 : `https://via.placeholder.com/128x190`,
               link: book.volumeInfo.infoLink,
               title: book.volumeInfo.title,
