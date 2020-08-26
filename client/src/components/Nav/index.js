@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import BookContext from "../../utils/BookContext";
+import API from "../../utils/API";
 
 const Nav = () => {
+  const bookContext = useContext(BookContext);
+
+  useEffect(() => {
+    API.getBooks()
+      .then((books) => {
+        bookContext.saved.set(books.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">

@@ -11,9 +11,9 @@ function App() {
   const bookModel = useBookModel();
   return (
     <Router>
-      <Nav />
-      <Jumbotron />
       <BookContext.Provider value={bookModel}>
+        <Nav />
+        <Jumbotron />
         <Switch>
           <Route exact path="/" component={Search} />
           <Route exact path="/saved" component={Saved} />

@@ -4,12 +4,7 @@ module.exports = {
   findAll: (req, res) => {
     db.Book.find({})
       .then((dbModel) => {
-        res.json(
-          dbModel.reduce((obj, book) => {
-            obj[book._id] = book;
-            return obj;
-          }, {})
-        );
+        res.json(dbModel);
       })
       .catch((err) => {
         res.json(err);

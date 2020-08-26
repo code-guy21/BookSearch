@@ -5,6 +5,7 @@ import BookContext from "../utils/BookContext";
 
 const Search = () => {
   const bookContext = useContext(BookContext);
+
   return (
     <>
       <Form />

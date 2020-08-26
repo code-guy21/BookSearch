@@ -8,11 +8,11 @@ const useBookModel = () => {
   return {
     books: {
       value: bookState,
-      set: (books) => setBooks({ ...books }),
+      set: (books) => setBooks([...books]),
     },
     saved: {
       value: savedState,
-      set: (books) => setSaved({ ...books }),
+      set: (books) => setSaved([...books]),
     },
     search: {
       value: searchState,

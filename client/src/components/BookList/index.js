@@ -4,7 +4,7 @@ import Book from "../Book";
 const BookList = ({ data }) => {
   return (
     <div className="container">
-      {Object.values(data).map((book, i) => {
+      {data.map((book, i) => {
         return (
           <Book
             key={i}

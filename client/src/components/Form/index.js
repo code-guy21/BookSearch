@@ -10,7 +10,7 @@ const Form = () => {
       API.searchBooks(bookContext.search.value)
         .then((books) => {
           let ordered = books.data.items.reduce((obj, book) => {
-            obj[book.id] = {
+            obj.push({
               authors: book.volumeInfo.authors,
               description: book.volumeInfo.description
                 ? book.volumeInfo.description
@@ -22,9 +22,9 @@ const Form = () => {
               title: book.volumeInfo.title,
               saved: false,
               bookId: book.id,
-            };
+            });
             return obj;
-          }, {});
+          }, []);
 
           bookContext.books.set(ordered);
         })

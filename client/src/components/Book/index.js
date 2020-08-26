@@ -8,14 +8,9 @@ const Book = (props) => {
   const handleDelete = () => {
     API.deleteBook(props.id)
       .then((resp) => {
-        let filtered = Object.entries(bookContext.saved.value)
-          .filter((book) => {
-            return book[0] !== props.id;
-          })
-          .reduce((obj, book) => {
-            obj[book[0]] = { ...book[1] };
-            return obj;
-          }, {});
+        let filtered = bookContext.saved.value.filter((book) => {
+          return book._id !== props.id;
+        });
 
         bookContext.saved.set(filtered);
       })
@@ -27,7 +22,11 @@ const Book = (props) => {
   const handleSave = () => {
     API.saveBook({ ...props, saved: true })
       .then((resp) => {
-        console.log(resp);
+        let filtered = bookContext.books.value.filter((book) => {
+          return book.bookId !== props.bookId;
+        });
+
+        bookContext.books.set(filtered);
       })
       .catch((err) => {
         console.log(err);
