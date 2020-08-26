@@ -11,7 +11,6 @@ const Form = () => {
         .then((books) => {
           bookContext.books.set(
             books.data.items.reduce((obj, book) => {
-              console.log(book);
               obj[book.id] = {
                 id: book.id,
                 authors: book.volumeInfo.authors,
@@ -23,6 +22,7 @@ const Form = () => {
                   : `https://via.placeholder.com/128x190`,
                 link: book.volumeInfo.infoLink,
                 title: book.volumeInfo.title,
+                saved: false,
               };
               return obj;
             }, {})
@@ -35,7 +35,13 @@ const Form = () => {
   };
 
   return (
-    <form className="container d-flex mb-3 justify-content-center">
+    <form
+      className="container d-flex mb-3 justify-content-center"
+      onSubmit={(e) => {
+        e.preventDefault();
+        searchBooks();
+      }}
+    >
       <input
         type="text"
         style={{ width: "63%" }}

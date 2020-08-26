@@ -21,7 +21,7 @@ const Book = (props) => {
             View
           </a>
           <button href="#" className="btn btn-danger">
-            Save
+            {props.saved ? "Delete" : "Save"}
           </button>
         </div>
       </div>

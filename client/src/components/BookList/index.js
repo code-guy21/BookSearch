@@ -14,6 +14,7 @@ const BookList = ({ data }) => {
             image={book.image}
             link={book.link}
             title={book.title}
+            saved={book.saved}
           />
         );
       })}
