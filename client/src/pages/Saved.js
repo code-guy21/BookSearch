@@ -9,14 +9,14 @@ const Saved = () => {
   useEffect(() => {
     API.getBooks()
       .then((books) => {
-        bookContext.books.set(books.data);
+        bookContext.saved.set(books.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  return <BookList />;
+  return <BookList data={bookContext.saved.value} />;
 };
 
 export default Saved;

@@ -1,13 +1,10 @@
-import React, { useContext } from "react";
-import BookContext from "../../utils/BookContext";
+import React from "react";
 import Book from "../Book";
 
-const BookList = () => {
-  const bookContext = useContext(BookContext);
-
+const BookList = ({ data }) => {
   return (
     <div className="container">
-      {Object.values(bookContext.books.value).map((book, i) => {
+      {Object.values(data).map((book, i) => {
         return (
           <Book
             key={i}
