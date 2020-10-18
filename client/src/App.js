@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import Jumbotron from "./components/Jumbotron";
 import BookContext from "./utils/BookContext";
 import useBookModel from "./utils/useBookModel";
+import "./App.css";
 
 function App() {
   const bookModel = useBookModel();
