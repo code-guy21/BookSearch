@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import BookContext from "../../utils/BookContext";
 import API from "../../utils/API";
 
+const navStyle = {
+  background: "rgb(0 0 0 / 35%)",
+};
+
 const Nav = () => {
   const bookContext = useContext(BookContext);
 
@@ -17,10 +21,13 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav
+      style={navStyle}
+      className="custom-nav navbar navbar-expand-lg navbar-dark"
+    >
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          Google Books
+          React Books
         </Link>
         <button
           className="navbar-toggler"

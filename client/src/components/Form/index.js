@@ -55,7 +55,12 @@ const Form = () => {
         placeholder="Moby Dick..."
         {...bookContext.search}
       />
-      <button onClick={searchBooks} type="button" className="btn btn-primary ">
+      <button
+        style={{ background: "rgb(0 0 0 / 35%)" }}
+        onClick={searchBooks}
+        type="button"
+        className="btn btn-secondary "
+      >
         Search
       </button>
     </form>
